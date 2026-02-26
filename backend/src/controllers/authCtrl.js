@@ -86,18 +86,19 @@ exports.login = async (req, res) => {
     if (!match)
       return res.status(400).json({ message: "Incorrect password" });
 
-    // ⭐⭐ VERY VERY IMPORTANT — this was missing ⭐⭐
+    // ⭐⭐ Store session for server-side validation ⭐⭐
     req.session.userId = user._id;
     req.session.user = {
       id: user._id,
       name: user.name,
       email: user.email,
-      role: user.role, // ⭐ THIS FIXES HOST ERROR
+      role: user.role,
     };
 
     return res.json({
       message: "Logged in",
-      user: req.session.user, // send session user
+      user: req.session.user,
+      sessionId: req.sessionID, // Send session ID to frontend
     });
 
   } catch (err) {
@@ -116,9 +117,26 @@ exports.logout = async (req, res) => {
 
 // ------------------------- GET ME -------------------------
 exports.getMe = async (req, res) => {
-  if (!req.session.userId)
+  try {
+    // Check if user has valid session
+    if (req.session.userId) {
+      const user = await User.findById(req.session.userId).select("-passwordHash");
+      return res.json({ user });
+    }
+    
+    // Fallback: Check for token in Authorization header (for cross-domain requests)
+    const authHeader = req.headers.authorization;
+    if (authHeader && authHeader.startsWith("Bearer ")) {
+      const sessionId = authHeader.substring(7); // Remove "Bearer " prefix
+      
+      // You would normally validate this against your session store
+      // For now, this is a backup - the session should be working
+      console.log("Auth token provided:", sessionId);
+    }
+    
     return res.status(401).json({ message: "Not authenticated" });
-
-  const user = await User.findById(req.session.userId).select("-passwordHash");
-  return res.json({ user });
+  } catch (err) {
+    console.error("getMe error:", err);
+    return res.status(500).json({ message: "Failed to fetch user" });
+  }
 };

@@ -21,9 +21,11 @@ API.interceptors.request.use(
     // Ensure credentials are sent with every request
     config.withCredentials = true;
     
-    // Add timestamp to prevent caching issues (only for specific endpoints if needed)
-    // Removed automatic timestamp - can cause issues with some endpoints
-    // If caching is an issue, add timestamp manually in specific requests
+    // Add sessionId from localStorage to Authorization header for cross-domain requests
+    const sessionId = localStorage.getItem("sessionId");
+    if (sessionId) {
+      config.headers.Authorization = `Bearer ${sessionId}`;
+    }
     
     // Log request for debugging (remove in production)
     console.log(`🔵 API Request: ${config.method?.toUpperCase()} ${config.url}`);

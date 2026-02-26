@@ -31,9 +31,12 @@ const Login = React.memo(() => {
       if (response.status === 200 && result.user) {
         console.log("Login successful:", result);
 
-        // ✔ Store session flags (optional)
+        // ✔ Store session flags and sessionId for cross-domain requests
         localStorage.setItem("sessionActive", "true");
         localStorage.setItem("role", result.user.role);
+        if (result.sessionId) {
+          localStorage.setItem("sessionId", result.sessionId);
+        }
 
         // ✔ Redirect based on role
         console.log("User ", result.user);
