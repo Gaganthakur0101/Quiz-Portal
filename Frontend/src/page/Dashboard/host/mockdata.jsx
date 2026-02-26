@@ -1,0 +1,88 @@
+
+
+const mockData = {
+  quizzes: [
+    {
+      id: 1,
+      title: "JavaScript Basics",
+      participants: 23,
+      questions: 10,
+      active: true,
+      avgScore: 72,
+      createdAt: "2025-09-18",
+      code: "JS2025",
+      easy: 4,
+      medium: 4,
+      hard: 2,
+      startTime: "2025-09-18T10:00",
+      endTime: "2025-09-18T11:00",
+    },
+    {
+      id: 2,
+      title: "React Fundamentals",
+      participants: 17,
+      questions: 8,
+      active: false,
+      avgScore: 80,
+      createdAt: "2025-09-20",
+      code: "REACT20",
+      easy: 3,
+      medium: 3,
+      hard: 2,
+      startTime: "2025-09-20T14:00",
+      endTime: "2025-09-20T15:00",
+    },
+  ],
+  notifications: [
+    {
+      id: 1,
+      message: "New participant joined 'JavaScript Basics'",
+      type: "info",
+    },
+    { id: 2, message: "Quiz 'React Fundamentals' ended", type: "warning" },
+  ],
+  participants: [
+    {
+      id: 1,
+      name: "John Doe",
+      rollNo: "CS001",
+      course: "Computer Science",
+      quizId: 1,
+      attempted: 8,
+      notAttempted: 2,
+      correct: 6,
+      incorrect: 2,
+      score: 60,
+      resultPublished: true,
+    },
+    {
+      id: 2,
+      name: "Jane Smith",
+      rollNo: "CS002",
+      course: "Computer Science",
+      quizId: 1,
+      attempted: 10,
+      notAttempted: 0,
+      correct: 9,
+      incorrect: 1,
+      score: 90,
+      resultPublished: true,
+    },
+    {
+      id: 3,
+      name: "Bob Johnson",
+      rollNo: "IT001",
+      course: "Information Technology",
+      quizId: 1,
+      attempted: 7,
+      notAttempted: 3,
+      correct: 5,
+      incorrect: 2,
+      score: 50,
+      resultPublished: false,
+    },
+  ],
+};
+
+
+export default mockData;

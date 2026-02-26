@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css2?family=Asimovian&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Cabin:ital,wght@0,400..700;1,400..700&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+@import "tailwindcss";
+
+body {
+  font-family: "Roboto", sans-serif;
+  /* background-color: antiquewhite; */
+  background-color: black;
+  color: white;
+  /* color:black; */
+}
+
+.pt-sans {
+  font-family: "PT Sans", sans-serif;
+}
+.roboto {
+  font-family: "Roboto", sans-serif;
+}
+.asimovian {
+  font-family: "Asimovian", sans-serif;
+}
+.cabin {
+  font-family: "Cabin", sans-serif;
+}
+.bricolage {
+  font-family: "Bricolage Grotesque", sans-serif;
+}
+
+/* @keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out; */
+/* } */
+
+/* Ensures inputs remain transparent */
+.input-transparent {
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+/* Prevent browser autocomplete styling */
+.input-transparent:-webkit-autofill,
+.input-transparent:-webkit-autofill:hover,
+.input-transparent:-webkit-autofill:focus,
+.input-transparent:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px transparent inset !important;
+  -webkit-text-fill-color: white !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Firefox autocomplete override */
+.input-transparent:-moz-autofill {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Animation for error messages */
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(-10px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out;
+}
