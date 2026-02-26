@@ -8,6 +8,9 @@ const settingsRoutes = require("./routes/settings");
 
 const app = express();
 
+// Required for secure cookies behind a proxy (Vercel)
+app.set("trust proxy", 1);
+
 app.use(express.json());
 
 app.use(
